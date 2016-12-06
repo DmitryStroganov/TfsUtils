@@ -24,7 +24,7 @@ namespace TfsUtils.Common
         }
     }
 
-    public class TfsUtilInitializer<TSetting> : ITfsUtilInitializer
+    public class TfsUtilInitializer<TSetting> : ITfsUtilInitializer where TSetting : class, new()
     {
         public TfsUtilInitializer(Uri tfsServerUrl, TSetting setting)
         {

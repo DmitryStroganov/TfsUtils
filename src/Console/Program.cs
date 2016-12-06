@@ -3,7 +3,6 @@ using System.Linq;
 using System.Reflection;
 using TfsUtils.Common;
 using TfsUtils.Common.Configuration;
-using TfsUtils.Common.Model;
 
 namespace TfsUtils
 {
@@ -25,8 +24,7 @@ namespace TfsUtils
 
             Console.Error.WriteLine($"Initializing {utilCommand.Value.Item1.Name}...");
 
-            var initializerType = typeof(TfsUtilInitializer<>).MakeGenericType(utilCommand.Value.Item2.GetType());
-            var tfsUtilInitializer = Activator.CreateInstance(initializerType, config.ServerUri, utilCommand.Value.Item2) as ITfsUtilInitializer;
+            var tfsUtilInitializer = TfsUtilsFactory.GetInitializer(config.ServerUri, utilCommand.Value.Item2);
             var impl = TfsUtilsFactory.GetUtil<string>(utilCommand.Value.Item1, tfsUtilInitializer);
 
             if (impl.ValidateArguments(args))
