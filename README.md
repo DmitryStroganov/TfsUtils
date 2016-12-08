@@ -8,3 +8,4 @@ A generalized Tfs Utilities implementation wrapper
 * Runtine command resolution and invoke
 * Sample "Comments Searcher" extension
 
+![Tfs Util keynote](/tfsUtils_overview.png)
